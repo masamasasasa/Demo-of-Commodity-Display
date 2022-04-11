@@ -105,9 +105,9 @@ a {
   max-height: 680px;
   width: 100%;
   height: 100%;
-  padding: 0 30px;
   background-color: #e7dfcf;
   position: relative;
+  min-width: 375px;
 }
 @media (max-width: 930px) {
   .container {
@@ -121,17 +121,24 @@ a {
     margin: 0 auto;
   }
 }
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #e7dfcf;
+  z-index: 10;
+}
 header {
   position: sticky;
   top: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
+  margin: 0 30px;
   height: 60px;
   font-size: 15px;
   border-bottom: 1px solid rgba(44, 45, 42, 0.25);
-  background-color: #e7dfcf;
-  z-index: 3;
+  z-index: 10;
 }
 header .left-nav {
   display: flex;
@@ -174,7 +181,14 @@ header .right-nav svg {
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
+  padding-left: 30px;
   position: relative;
+  z-index: 5;
+}
+@media screen and (max-width: 930px) {
+  .product-display {
+    padding-left: 0;
+  }
 }
 .product-display .swiper-main {
   display: none;
@@ -198,7 +212,7 @@ header .right-nav svg {
   .text-introduction {
     text-align: center;
     max-width: 450px;
-    margin: 0 auto;
+    margin: 0 20px;
   }
 }
 .main-wrapper {
@@ -358,13 +372,16 @@ header .right-nav svg {
   background-size: 250%, 100%;
   background-position: right, bottom;
   transition: all 0.3s ease-out;
+  z-index: 6;
 }
-.swiper-button:hover {
-  background-color: var(--body-color);
-  background-position: left bottom;
-}
-.swiper-button:hover svg {
-  stroke: #fff;
+@media (any-hover: hover) {
+  .swiper-button {
+    background-color: var(--body-color);
+    background-position: left bottom;
+  }
+  .swiper-button svg {
+    stroke: #fff;
+  }
 }
 @media screen and (max-width: 930px) {
   .swiper-button {
@@ -380,9 +397,11 @@ header .right-nav svg {
 .swiper-prev-button svg {
   transform: rotate(180deg);
 }
-.swiper-prev-button:hover {
-  background-color: var(--body-color);
-  background-position: right bottom;
+@media (any-hover: hover) {
+  .swiper-prev-button {
+    background-color: var(--body-color);
+    background-position: right bottom;
+  }
 }
 .swiper-main {
   opacity: 0;
